@@ -1,23 +1,24 @@
 import React from 'react'
-import { ActivityPlanService } from 'services/ActivityPlan.service'
 import Card from "src/components/Card/index.jsx"
 import Modal from "components/Modal"
+import { Rounded } from "src/components/Buttons"
+import Icon from "src/components/Icon/index.jsx"
+import { connect } from 'react-redux'
+import { getCurrentActivities, moveDay } from "src/store/activity_plans/actions"
 
 class Home extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      activities: undefined,
       showModal: false,
       selectedCard: undefined
     }
   }
 
   getActivityPlan() {
-    ActivityPlanService.current({ parentId: 1 }).then(response => {
-      this.setState({
-        activities: response.activity_plan
-      })
+    const { dispatch } = this.props
+    dispatch(getCurrentActivities({ babyId: 1 })).catch(error => {
+      console.log("There was an error getting the activities", error)
     })
   }
 
@@ -38,32 +39,33 @@ class Home extends React.Component {
   }
 
   closeModal(e) {
-    e.stopPropagation()
+    e.persist()
     this.setState({
       showModal: false
     })
     this.refs.video.pause()
-    this.refs.video.currentTime = 0;
+    this.refs.video.currentTime = 0
   }
 
   showActivities() {
-    if (this.state.activities === undefined) {
+    const { day } = this.props
+    if (day === undefined) {
       return <p className="loading-text">Loading ...</p>
-    } else if (this.state.activities.days[0].items.length === 0) {
+    } else if (day.items.length === 0) {
       return <p className="loading-text">No activities yet</p>
     }
-    return this.state.activities.days[0].items
+    return day.items
       .filter(item => item.type === "activity")
       .map(activity => {
         return (
           <div className="col" key={activity.instance_id}>
-            <Card data={activity} onClickCard={this.openModal.bind(this)}/>
+            <Card data={activity} onClickCard={this.openModal.bind(this)} />
           </div>
         )
       })
   }
 
-  shouldShowModal () {
+  shouldShowModal() {
     if (this.state.selectedCard) {
       return (
         <Modal show={this.state.showModal} onClose={this.closeModal.bind(this)}>
@@ -80,14 +82,46 @@ class Home extends React.Component {
         </Modal>
       )
     }
-    console.error('cannot load the modal')
+  }
+
+  isLastPage = () => this.props.currentDay === this.props.totalDays
+  isFirstPage = () => this.props.currentDay === 1
+
+  canGetBack = () => {
+    const { dispatch } = this.props
+    if (!this.isFirstPage()) {
+      return (
+        <div style={{ transform: "translateY(-50%)", position: "fixed", top: "50%", left: "10px" }} onClick={e => dispatch(moveDay('prev'))}>
+          <Rounded color="#75B753" >
+            <Icon name="arrow_back" color="#fff" />
+          </Rounded>
+        </div>
+      )
+    }
+    return null
+  }
+
+  canMoveNext = () => {
+    const { dispatch } = this.props
+    if (!this.isLastPage()) {
+      return (
+        <div style={{ transform: "translateY(-50%)", position: "fixed", top: "50%", right: "10px" }} onClick={e => dispatch(moveDay('next'))}>
+          <Rounded color="#75B753">
+            <Icon name="arrow_forward" color="#fff" />
+          </Rounded>
+        </div>
+      )
+    }
+    return null
   }
 
   render() {
     return (
       <div className="page">
         <div className="page-content">
+          {this.canGetBack()}
           <div className="row">{this.showActivities()}</div>
+          {this.canMoveNext()}
         </div>
         {this.shouldShowModal()}
       </div>
@@ -95,4 +129,23 @@ class Home extends React.Component {
   }
 }
 
-export default Home
+const mapStateToProps = ({ activityPlansReducer }) => {
+  const { list, currentDay, totalDays } = activityPlansReducer
+  let days = undefined
+  let day = undefined
+
+  if (list && list.days) {
+    days = list.days
+  }
+
+  if (days && currentDay) {
+    day = days[currentDay - 1]
+  }
+
+  return {
+    day,
+    currentDay,
+    totalDays
+  }
+}
+export default connect(mapStateToProps)(Home)

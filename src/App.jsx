@@ -1,30 +1,24 @@
-import React from 'react'
-import './app.scss'
-import { Rounded } from 'src/components/Buttons'
+import React from 'react';
+import './app.scss';
 
-import Navbar from 'components/Navbar'
-import Icon from 'src/components/Icon/index.jsx'
-import Home from 'src/pages/Home.jsx'
+// React Redux
+import reduxStore from './store';
+import { Provider } from 'react-redux';
+
+import Navbar from 'components/Navbar';
+import Home from 'src/pages/Home.jsx';
+
+const store = reduxStore()
 
 function App (props) {
 
   return (
-    <>
+    <Provider store={store}>
       <Navbar fixed={true}/>
-      <div style={{transform: 'translateY(-50%)', position: 'fixed', top: '50%', 'left': '10px'}}>
-        <Rounded color="#75B753">
-          <Icon name="arrow_back" color="#fff"/>
-        </Rounded>
-      </div>s
       <div className="container">
         <Home />
       </div>
-      <div style={{transform: 'translateY(-50%)', position: 'fixed', top: '50%', 'right': '10px'}}>
-        <Rounded color="#75B753">
-          <Icon name="arrow_forward" color="#fff"/>
-        </Rounded>
-      </div>
-    </>
+    </Provider>
   )
 }
 

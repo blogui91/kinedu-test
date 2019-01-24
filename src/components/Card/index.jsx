@@ -27,7 +27,7 @@ export default class Card extends Component {
   render () {
     const { data, onClickCard } = this.props
     return <>
-        <div className="card non-selectable" style={this.props.style}>
+        <div className="card non-selectable fade-in" style={this.props.style}>
           <div className="card-header" onClick={e => onClickCard(data.content)}>
             <img src={data.content.shareable_thumbnail_url} alt="" />
           </div>

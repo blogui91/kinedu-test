@@ -1,0 +1,40 @@
+.navbar {
+  width: 100%;
+  padding-top: 10px;
+  min-height: 50px;
+}
+.navbar.fixed {
+  position: fixed;
+  top: 0;
+}
+
+.tabs {
+  display: flex;
+  a.tab {
+    padding: 15px 20px;
+    color: white;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    &:hover {
+      opacity: 0.8;
+      .line {
+        width: 100%;
+      }
+    }
+    .line {
+      position: absolute;
+      bottom: 0;
+      width: 0;
+      left: 0;
+      height:2px;
+      background-color:white;
+      transition: all 250ms ease 0s;
+    }
+  }
+  a.active {
+    .line {
+      width: 100%;
+    }
+  }
+}

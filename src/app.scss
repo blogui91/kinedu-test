@@ -1,3 +1,5 @@
+@import "./theme/_variables.scss";
+
 /*
 ██╗          █████╗     ██╗   ██╗     ██████╗     ██╗   ██╗    ████████╗    
 ██║         ██╔══██╗    ╚██╗ ██╔╝    ██╔═══██╗    ██║   ██║    ╚══██╔══╝    
@@ -25,4 +27,232 @@ body {
 .container {
   max-width: 1000px;
   margin: 0 auto;
+}
+
+.page {
+  padding-top: 50px;
+}
+
+.page-content {
+  padding: 24px;
+}
+
+/*
+   ██████╗     ██████╗     ██╗    ██████╗ 
+  ██╔════╝     ██╔══██╗    ██║    ██╔══██╗
+  ██║  ███╗    ██████╔╝    ██║    ██║  ██║
+  ██║   ██║    ██╔══██╗    ██║    ██║  ██║
+  ╚██████╔╝    ██║  ██║    ██║    ██████╔╝
+   ╚═════╝     ╚═╝  ╚═╝    ╚═╝    ╚═════╝ 
+*/
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -10px;
+  margin-top: -10px;
+}
+
+.col {
+  flex: 1 0 calc(50% - 10px);
+  box-sizing: border-box;
+  padding: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+
+@media screen and(max-width:600px) {
+  .col {
+    flex: 1 0 calc(100% - 10px);
+  }
+}
+
+
+/*
+████████╗    ███████╗    ██╗  ██╗    ████████╗
+╚══██╔══╝    ██╔════╝    ╚██╗██╔╝    ╚══██╔══╝
+   ██║       █████╗       ╚███╔╝        ██║   
+   ██║       ██╔══╝       ██╔██╗        ██║   
+   ██║       ███████╗    ██╔╝ ██╗       ██║   
+   ╚═╝       ╚══════╝    ╚═╝  ╚═╝       ╚═╝   
+*/
+
+.loading-text {
+  text-align: center;
+  display: block;
+  margin: 10px;
+  width: 100%;
+  margin-top: 10rem;
+  font-size: 3rem;
+  color: #5d5d5d;
+}
+
+.center {
+  text-align: center;
+}
+
+.non-selectable {
+  user-select: none;
+}
+
+p.caption {
+  color: #5f5b5b;
+}
+
+@media screen and (max-width: 600px) {
+  p.caption {
+    font-size: 14px;
+    color: #5f5b5b;
+    font-weight: 400;
+  }
+}
+
+/*
+██╗  ██╗    ███████╗    ██╗         ██████╗     ███████╗    ██████╗     ███████╗    
+██║  ██║    ██╔════╝    ██║         ██╔══██╗    ██╔════╝    ██╔══██╗    ██╔════╝    
+███████║    █████╗      ██║         ██████╔╝    █████╗      ██████╔╝    ███████╗    
+██╔══██║    ██╔══╝      ██║         ██╔═══╝     ██╔══╝      ██╔══██╗    ╚════██║    
+██║  ██║    ███████╗    ███████╗    ██║         ███████╗    ██║  ██║    ███████║    
+╚═╝  ╚═╝    ╚══════╝    ╚══════╝    ╚═╝         ╚══════╝    ╚═╝  ╚═╝    ╚══════╝    
+*/
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.circle {
+  margin: 10px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 100%;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    margin: 0;
+  }
+}
+
+/*
+ ██████╗     ██████╗     ██╗          ██████╗     ██████╗     ███████╗
+██╔════╝    ██╔═══██╗    ██║         ██╔═══██╗    ██╔══██╗    ██╔════╝
+██║         ██║   ██║    ██║         ██║   ██║    ██████╔╝    ███████╗
+██║         ██║   ██║    ██║         ██║   ██║    ██╔══██╗    ╚════██║
+╚██████╗    ╚██████╔╝    ███████╗    ╚██████╔╝    ██║  ██║    ███████║
+ ╚═════╝     ╚═════╝     ╚══════╝     ╚═════╝     ╚═╝  ╚═╝    ╚══════╝
+*/
+
+.bg-primary {
+  background-color: $primary !important;
+}
+
+.text-primary {
+  color: $primary !important;
+}
+
+.bg-blue {
+  background-color: $blue !important;
+}
+
+.text-blue {
+  color: $blue !important;
+}
+
+.bg-green {
+  background-color: $green !important;
+}
+
+.text-green {
+  color: $green !important;
+}
+
+.bg-grey {
+  background-color: $grey !important;
+}
+
+.text-grey {
+  color: $grey !important;
+}
+
+.bg-grey-lighten {
+  background-color: $grey-lighten !important;
+}
+
+.text-grey-lighten {
+  color: $grey-lighten !important;
+}
+
+.bg-blue-lighten {
+  background-color: $blue-lighten !important;
+}
+
+.text-blue-lighten {
+  color: $blue-lighten !important;
+}
+
+/*
+ █████╗     ███╗   ██╗    ██╗    ███╗   ███╗     █████╗     ████████╗    ██╗     ██████╗     ███╗   ██╗    ███████╗
+██╔══██╗    ████╗  ██║    ██║    ████╗ ████║    ██╔══██╗    ╚══██╔══╝    ██║    ██╔═══██╗    ████╗  ██║    ██╔════╝
+███████║    ██╔██╗ ██║    ██║    ██╔████╔██║    ███████║       ██║       ██║    ██║   ██║    ██╔██╗ ██║    ███████╗
+██╔══██║    ██║╚██╗██║    ██║    ██║╚██╔╝██║    ██╔══██║       ██║       ██║    ██║   ██║    ██║╚██╗██║    ╚════██║
+██║  ██║    ██║ ╚████║    ██║    ██║ ╚═╝ ██║    ██║  ██║       ██║       ██║    ╚██████╔╝    ██║ ╚████║    ███████║
+╚═╝  ╚═╝    ╚═╝  ╚═══╝    ╚═╝    ╚═╝     ╚═╝    ╚═╝  ╚═╝       ╚═╝       ╚═╝     ╚═════╝     ╚═╝  ╚═══╝    ╚══════╝                                                                                                                   
+*/
+
+.fade-in {
+  animation: fadein 0.4s;
+}
+
+.fade-in-down {
+  animation: fadein-down 0.5s;
+}
+
+.fade-out-up {
+  animation: fadeout-up 0.5s;
+}
+
+@keyframes fadein-down {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -20%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeout-up {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0%, 0);
+  }
+
+  to {
+    opacity: 0;
+    display: none;
+    transform: translate3d(0, -20%, 0);
+  }
+}
+
+@keyframes fadein {
+  from {
+    display: block;
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

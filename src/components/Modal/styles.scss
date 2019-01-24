@@ -1,0 +1,46 @@
+.modal-layer {
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.modal-container {
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  width: 60%;
+  height: auto;
+}
+
+.modal-header .modal-close-button {
+  background-color: transparent;
+  color: #777;
+  border: 0;
+  font-size: 30px;
+}
+
+
+@media screen and (max-width: 1000px) {
+  .modal-container {
+    width: 75%;
+  }
+}
+
+@media screen and(max-width: 600px) {
+  .modal-container {
+    width: 90%;
+  }
+}
+
+@media screen and(max-width: 380px) {
+  .modal-container {
+    width: 95%;
+  }
+}

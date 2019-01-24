@@ -1,0 +1,48 @@
+.card {
+  box-shadow: 1px 1px 7px 1px rgba(0, 0, 0, 0.2);
+  animation: fadein 1s;
+  margin-bottom: 1.5rem;
+  border-radius: 7px;
+  .card-header {
+    cursor: pointer;
+    img {
+      width: 100%;
+      border-radius: 7px 7px 0 0;
+    }
+  }
+
+  .card-footer {
+    display: flex;
+    .footer-content {
+      padding: 15px 10px;
+    }
+  }
+
+}
+
+.modal {
+  .modal-container {
+    border-radius: 10px;
+    img.activity-image,
+    video.activity-image {
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+    }
+  }
+
+  .modal-card-title {
+    padding: 16px;
+    color: white;
+    margin-top: -5px;
+    font-size: 1.25rem;
+  }
+  
+  .modal-card-description {
+    background-color: white;
+    padding: 24px;
+    border-radius: 0 0 10px 10px;
+    .description-title {
+      padding: 10px 0;
+    }
+  }
+}

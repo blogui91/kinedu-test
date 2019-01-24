@@ -1,0 +1,33 @@
+$teal:#008080;
+
+.btn {
+  border: 0;
+  border-width: 0;
+}
+.btn.rounded {
+  cursor: pointer;
+  outline-color: transparent;
+  border-radius: 50%;
+  border-width: 0;
+  min-height: 60px;
+  min-width: 60px;
+  padding: 10px;
+  box-shadow: 1px 3px 17px 5px rgba(0, 0, 0, 0.3);
+}
+
+
+// Backgrounds
+.text-teal {
+  background-color: $teal;
+}
+.text-white {
+  background-color: #fff;
+}
+
+// Texts 
+.bg-teal {
+  background-color: $teal;
+}
+.bg-white {
+  background-color: #fff;
+}

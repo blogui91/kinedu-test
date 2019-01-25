@@ -11,6 +11,7 @@
 
 .tabs {
   display: flex;
+  overflow-y: auto;
   a.tab {
     padding: 15px 20px;
     color: white;
@@ -36,6 +37,15 @@
   a.active {
     .line {
       width: 100%;
+    }
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  .tabs {
+    a.tab {
+      font-size: 12px;
     }
   }
 }

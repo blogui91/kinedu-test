@@ -27,10 +27,11 @@ class Home extends React.Component {
   getActivityPlan() {
     // eslint-disable-next-line react/destructuring-assignment
     const babyId = Math.floor(Math.random() * 10);
-    this.props.dispatch(getCurrentActivities({ babyId })).catch((error) => {
-      console.log('There was an error getting the activities', error);
-      throw error;
-    });
+    this.props.dispatch(getCurrentActivities({ babyId }))
+      .catch((error) => {
+        console.log('There was an error getting the activities', error);
+        throw error;
+      });
   }
 
   closeModal = (e) => {
@@ -48,30 +49,39 @@ class Home extends React.Component {
 
   canGetBack = () => {
     // eslint-disable-next-line react/prop-types
-    const { dispatch } = this.props;
-    if (!this.isFirstPage()) {
-      return (
-        <div
-          className="arrow-prev"
-          onClick={() => dispatch(moveDay('prev'))}
-        >
-          <Rounded color="#75B753">
-            <Icon name="arrow_back" color="#fff" />
-          </Rounded>
-        </div>
-      );
+    const { dispatch, day } = this.props;
+
+    if (!day) {
+      return null;
     }
-    return null;
+
+    // if (!this.isFirstPage()) {
+    return (
+      <div
+        className="arrow-prev"
+        onClick={() => dispatch(moveDay('prev'))}
+      >
+        <Rounded color="#75B753">
+          <Icon name="chevron_left" size={40} color="#fff" />
+        </Rounded>
+      </div>
+    );
+    // }
+    // return null;
   }
 
   canMoveNext = () => {
     // eslint-disable-next-line react/prop-types
-    const { dispatch } = this.props;
-    // if (!this.isLastPage()) {
+    const { dispatch, day } = this.props;
+
+    if (!day) {
+      return null;
+    }
+    // if (!) {
     return (
       <div className="arrow-next" onClick={() => dispatch(moveDay('next'))}>
-        <Rounded color="#75B753">
-          <Icon name="arrow_forward" color="#fff" />
+        <Rounded color="#75B753" disabled={this.isLastPage()}>
+          <Icon name="chevron_right" size={40} color="#fff" />
         </Rounded>
       </div>
     );
@@ -143,15 +153,17 @@ class Home extends React.Component {
     const { currentDay } = this.props;
     return (
       <div className="page">
-        <div className="page-content">
-          {this.canGetBack()}
-          <h1 className="text-blue">
+        <div className="page-content" style={{ position: 'relative' }}>
+          <h1 className="text-blue-lighten text-w400">
             Day
             {' '}
             {currentDay}
           </h1>
-          <div className="row">{this.showActivities()}</div>
+          {this.canGetBack()}
           {this.canMoveNext()}
+          <div className="row">
+            {this.showActivities()}
+          </div>
         </div>
         {this.shouldShowModal()}
       </div>

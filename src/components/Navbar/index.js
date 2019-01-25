@@ -4,7 +4,7 @@ import './styles.scss';
 import { connect } from 'react-redux';
 import { setCurrentDay } from 'src/store/activity_plans/actions';
 
-function Header({
+function Navbar({
   fixed, days, dispatch, currentDay,
 }) {
   function renderTabs() {
@@ -15,13 +15,14 @@ function Header({
       }
       tabClassNames = tabClassNames.join(' ');
       return (
-        <a 
+        <a
           href={`#tab-${day.day}`}
           key={day.day}
           onClick={() => dispatch(setCurrentDay(day.day))}
           className={tabClassNames}
         >
           Day
+          {' '}
           {day.day}
           <div className="line" />
         </a>
@@ -57,15 +58,15 @@ const mapStateToProps = ({ activityPlansReducer }) => {
   };
 };
 
-Header.defaultProps = {
+Navbar.defaultProps = {
   fixed: false,
   currentDay: 1,
 };
 
-Header.propTypes = {
+Navbar.propTypes = {
   fixed: PropTypes.bool,
   currentDay: PropTypes.number,
   days: PropTypes.array.isRequired,
 };
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps)(Navbar);

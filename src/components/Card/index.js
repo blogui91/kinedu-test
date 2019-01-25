@@ -17,7 +17,7 @@ export default function Card({ data, onClickCard, style }) {
           <img src={footIcon} alt="" />
         </div>
         <div className="footer-content">
-          <h3 style={{ fontWeight: 'bold', padding: '5px' }} className="text-grey">
+          <h3 style={{ fontWeight: 'bold', padding: '5px' }} className="text-grey truncate-">
             {data.content.name}
           </h3>
           <p style={{ fontWeight: 'lighter' }} className="text-grey-lighten">

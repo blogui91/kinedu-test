@@ -1,0 +1,56 @@
+/*
+ █████╗     ███╗   ██╗    ██╗    ███╗   ███╗     █████╗     ████████╗    ██╗     ██████╗     ███╗   ██╗    ███████╗
+██╔══██╗    ████╗  ██║    ██║    ████╗ ████║    ██╔══██╗    ╚══██╔══╝    ██║    ██╔═══██╗    ████╗  ██║    ██╔════╝
+███████║    ██╔██╗ ██║    ██║    ██╔████╔██║    ███████║       ██║       ██║    ██║   ██║    ██╔██╗ ██║    ███████╗
+██╔══██║    ██║╚██╗██║    ██║    ██║╚██╔╝██║    ██╔══██║       ██║       ██║    ██║   ██║    ██║╚██╗██║    ╚════██║
+██║  ██║    ██║ ╚████║    ██║    ██║ ╚═╝ ██║    ██║  ██║       ██║       ██║    ╚██████╔╝    ██║ ╚████║    ███████║
+╚═╝  ╚═╝    ╚═╝  ╚═══╝    ╚═╝    ╚═╝     ╚═╝    ╚═╝  ╚═╝       ╚═╝       ╚═╝     ╚═════╝     ╚═╝  ╚═══╝    ╚══════╝                                                                                                                   
+*/
+
+.fade-in {
+  animation: fadein 1s;
+}
+
+.fade-in-down {
+  animation: fadein-down 0.5s;
+}
+
+.fade-out-up {
+  animation: fadeout-up 0.5s;
+}
+
+@keyframes fadein-down {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -20%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeout-up {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0%, 0);
+  }
+
+  to {
+    opacity: 0;
+    display: none;
+    transform: translate3d(0, -20%, 0);
+  }
+}
+
+@keyframes fadein {
+  from {
+    display: block;
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

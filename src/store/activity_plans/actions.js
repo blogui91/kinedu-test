@@ -13,7 +13,6 @@ export function getCurrentActivities({ babyId }) {
     return new Promise((resolve, reject) => {
       ActivityPlanService.current({ parentId: babyId || 1 })
         .then((response) => {
-          console.log(response.activity_plan);
           dispatch(fetchActivities(response.activity_plan));
           resolve(response)
         })

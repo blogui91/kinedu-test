@@ -3,6 +3,23 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 import { connect } from 'react-redux';
 import { setCurrentDay } from 'src/store/activity_plans/actions';
+import lifeCycle from 'react-pure-lifecycle';
+
+
+// Stateless or functional components dont have hooks however we can use react-pure-lifecycle
+const componentDidMount = ({ dispatch }) => {
+  const { hash } = window.location;
+  let step = hash.split('#tab-').join('');
+  if (isFinite(step) && step !== null) {
+    step = parseInt(step);
+    dispatch(setCurrentDay(step));
+  }
+};
+
+const methods = {
+  componentDidMount,
+};
+
 
 function Navbar({
   fixed, days, dispatch, currentDay,
@@ -69,4 +86,4 @@ Navbar.propTypes = {
   days: PropTypes.array.isRequired,
 };
 
-export default connect(mapStateToProps)(Navbar);
+export default connect(mapStateToProps)(lifeCycle(methods)(Navbar));

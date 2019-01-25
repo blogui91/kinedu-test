@@ -1,30 +1,32 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './styles.scss';
 import { connect } from 'react-redux';
 import { setCurrentDay } from 'src/store/activity_plans/actions';
 
-function Header ({ fixed, days, dispatch, currentDay }) {
-  function renderTabs () {
-    return days.map(day => {
-      let tabClassNames = [
-        'tab'
-      ]
+function Header({
+  fixed, days, dispatch, currentDay,
+}) {
+  function renderTabs() {
+    return days.map((day) => {
+      let tabClassNames = ['tab'];
       if (day.day === currentDay) {
-        tabClassNames.push('active')
+        tabClassNames.push('active');
       }
-      tabClassNames = tabClassNames.join(' ')
+      tabClassNames = tabClassNames.join(' ');
       return (
         <a 
           href={`#tab-${day.day}`}
           key={day.day}
-          onClick={ e => dispatch(setCurrentDay(day.day)) }
+          onClick={() => dispatch(setCurrentDay(day.day))}
           className={tabClassNames}
         >
-          Day {day.day}
-          <div className="line"></div>
+          Day
+          {day.day}
+          <div className="line" />
         </a>
-      )
-    })
+      );
+    });
   }
 
   const classes = ['navbar', 'bg-blue', 'non-selectable'];
@@ -39,21 +41,31 @@ function Header ({ fixed, days, dispatch, currentDay }) {
         </div>
       </div>
     </header>
-  )
-
+  );
 }
 
 const mapStateToProps = ({ activityPlansReducer }) => {
-  const { list, currentDay, totalDays } = activityPlansReducer
+  const { list, currentDay, totalDays } = activityPlansReducer;
   let days = []
   if (list && list.days) {
-    days = list.days
+    days = list.days;
   }
   return {
     days,
     currentDay,
-    totalDays
-  }
-}
+    totalDays,
+  };
+};
 
-export default connect(mapStateToProps)(Header)
+Header.defaultProps = {
+  fixed: false,
+  currentDay: 1,
+};
+
+Header.propTypes = {
+  fixed: PropTypes.bool,
+  currentDay: PropTypes.number,
+  days: PropTypes.array.isRequired,
+};
+
+export default connect(mapStateToProps)(Header);

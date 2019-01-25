@@ -1,19 +1,20 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux'
-import thunkMiddleware from 'redux-thunk'
-import { createLogger } from 'redux-logger'
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import { createLogger } from 'redux-logger';
 
 // Reducers
-import activityPlansReducer from './activity_plans/reducers'
+import activityPlansReducer from './activity_plans/reducers';
+
 const rootReducer = combineReducers({
-  activityPlansReducer
-})
+  activityPlansReducer,
+});
 
-const loggerMiddleware = createLogger()
+const loggerMiddleware = createLogger();
 
-export default function configStore (preloadedState) {
+export default function configStore(preloadedState) {
   return createStore(
     rootReducer,
     preloadedState,
-    applyMiddleware(thunkMiddleware, loggerMiddleware)
-  )
+    applyMiddleware(thunkMiddleware, loggerMiddleware),
+  );
 }

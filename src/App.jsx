@@ -2,24 +2,21 @@ import React from 'react';
 import './app.scss';
 
 // React Redux
-import reduxStore from './store';
 import { Provider } from 'react-redux';
-
 import Navbar from 'components/Navbar';
 import Home from 'src/pages/Home.jsx';
+import reduxStore from './store';
 
-const store = reduxStore()
-
-function App (props) {
-
+const store = reduxStore();
+function App(props) {
   return (
     <Provider store={store}>
-      <Navbar fixed={true}/>
+      <Navbar fixed {...props} />
       <div className="container">
         <Home />
       </div>
     </Provider>
-  )
+  );
 }
 
-export default App
+export default App;

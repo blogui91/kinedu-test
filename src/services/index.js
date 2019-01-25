@@ -1,52 +1,48 @@
-import { http } from 'src/plugins/axios'
+import { http } from 'src/plugins/axios';
 
 class Service {
-
-  constructor ({ endpoint, baseUrl, parentEndpoint }) {
-    this.http = http
-    this.endpoint = endpoint
-    this.parentEndpoint = parentEndpoint || null
-    this.baseUrl = baseUrl
+  constructor({ endpoint, baseUrl, parentEndpoint }) {
+    this.http = http;
+    this.endpoint = endpoint;
+    this.parentEndpoint = parentEndpoint || null;
+    this.baseUrl = baseUrl;
   }
 
-  buildUrl ({ parentId, id }) {
+  buildUrl({ parentId, id }) {
     if (this.parentEndpoint && !parentId) {
       throw new Error('This service need at least a parent id');
     }
-    return this.baseUrl + (this.parentEndpoint ? `${this.parentEndpoint}/${parentId}/` : '') + `${this.endpoint}` + (id ? `/${id}` : '')
+    return `${this.baseUrl + (this.parentEndpoint ? `${this.parentEndpoint}/${parentId}/` : '')}${this.endpoint}${id ? `/${id}` : ''}`;
   }
 
-  create (payload, parentId = null) {
-    const url = this.buildUrl({ parentId })
-    return this.http.post(url, payload)
+  create(payload, parentId = null) {
+    const url = this.buildUrl({ parentId });
+    return this.http.post(url, payload);
   }
 
-  get (params = {}, parentId = null) {
-    const url = this.buildUrl({ parentId })
+  get(params = {}, parentId = null) {
+    const url = this.buildUrl({ parentId });
     return this.http.get(url, {
-      params
-    })
+      params,
+    });
   }
 
-  find (id , params = {}, parentId = null) {
-    const url = this.buildUrl({ parentId, id })
+  find(id, params = {}, parentId = null) {
+    const url = this.buildUrl({ parentId, id });
     return this.http.get(url, {
-      params
-    })
+      params,
+    });
   }
 
-  update (id, payload, parentId) {
-    const url = this.buildUrl({ parentId, id })
-    return this.http.put(url, payload, {
-      params
-    })
+  update(id, payload, parentId) {
+    const url = this.buildUrl({ parentId, id });
+    return this.http.put(url, payload);
   }
 
-  delete (id, parentId) {
-    const url = this.buildUrl({ parentId, id })
-    return this.http.delete(url)
+  delete(id, parentId) {
+    const url = this.buildUrl({ parentId, id });
+    return this.http.delete(url);
   }
-
 }
 
-export default Service
+export default Service;

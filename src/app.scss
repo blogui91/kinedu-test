@@ -34,7 +34,7 @@ body {
 }
 
 .page-content {
-  padding: 24px;
+  padding: 72px 24px;
 }
 
 /*
@@ -141,6 +141,20 @@ p.caption {
     height: 50px;
     margin: 0;
   }
+}
+
+.arrow-prev {
+  transform: translateY(-50%);
+  position: fixed;
+  top: 50%;
+  left: 10px;
+}
+
+.arrow-next {
+  transform: translateY(-50%);
+  position: fixed;
+  top: 50%;
+  right: 10px;
 }
 
 /*

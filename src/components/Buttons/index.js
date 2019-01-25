@@ -1,4 +1,5 @@
-import Rounded from './rounded.jsx'
+import Rounded from './rounded';
+
 export {
   Rounded
 }

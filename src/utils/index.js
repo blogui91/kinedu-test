@@ -1,7 +1,7 @@
-import findValue from './findValue'
-import randomId from './randomId'
+import findValue from './findValue';
+import randomId from './randomId';
 
 export {
   randomId,
-  findValue
-}
+  findValue,
+};

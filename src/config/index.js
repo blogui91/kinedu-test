@@ -1,8 +1,8 @@
-import api from './api'
-import { findValue } from 'src/utils'
+import { findValue } from 'src/utils';
+import api from './api';
 
-export default function config (key, fallback) {
+export default function config(key, fallback) {
   return findValue(key, {
-    api
-  }) || fallback
+    api,
+  }) || fallback;
 }

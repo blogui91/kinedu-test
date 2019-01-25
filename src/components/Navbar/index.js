@@ -10,7 +10,7 @@ import lifeCycle from 'react-pure-lifecycle';
 const componentDidMount = ({ dispatch }) => {
   const { hash } = window.location;
   let step = hash.split('#tab-').join('');
-  if (isFinite(step) && step !== null) {
+  if (isFinite(step) && step !== null && !(step === '')) {
     step = parseInt(step);
     dispatch(setCurrentDay(step));
   }

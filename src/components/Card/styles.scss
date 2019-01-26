@@ -15,6 +15,11 @@
     display: flex;
     .footer-content {
       padding: 15px 10px;
+      h3 {
+        font-weight: 600;
+        font-family: 'Helvetica';
+        font-size: 1rem;
+      }
     }
   }
 

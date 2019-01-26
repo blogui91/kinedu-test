@@ -8,7 +8,7 @@ export default function Rounded({
   children,
 }) {
   return (
-    <button type="button" className="btn rounded" style={{ fontSize: (size), backgroundColor: color }}>
+    <button type="button" className="btn rounded" style={{ fontSize: (size), backgroundColor: color, width: '71px', height: '71px'}}>
       {children}
     </button>
   );

@@ -62,7 +62,7 @@ class Home extends React.Component {
         onClick={() => dispatch(moveDay('prev'))}
       >
         <Rounded color="#75B753">
-          <Icon name="chevron_left" size={40} color="#fff" />
+          <Icon name="chevron_left" size={53} color="#fff" />
         </Rounded>
       </div>
     );
@@ -81,7 +81,7 @@ class Home extends React.Component {
     return (
       <div className="arrow-next" onClick={() => dispatch(moveDay('next'))}>
         <Rounded color="#75B753" disabled={this.isLastPage()}>
-          <Icon name="chevron_right" size={40} color="#fff" />
+          <Icon name="chevron_right" size={53} color="#fff" />
         </Rounded>
       </div>
     );
@@ -107,10 +107,10 @@ class Home extends React.Component {
             <code>video</code>
           </video>
           <div className="modal-card-title bg-blue">
-            <p>{selectedCard.name}</p>
+            <p className="font-text-lato-bold">{selectedCard.name}</p>
           </div>
-          <div className="modal-card-description">
-            <p className="description-title"> Description: </p>
+          <div className="modal-card-description font-text-lato-regular">
+            <p className="description-title font-text-lato-bold"> Description: </p>
             <p className="caption">{selectedCard.description}</p>
           </div>
         </Modal>
@@ -152,9 +152,9 @@ class Home extends React.Component {
   render() {
     const { currentDay } = this.props;
     return (
-      <div className="page">
+      <div className="page container-cards">
         <div className="page-content" style={{ position: 'relative' }}>
-          <h1 className="text-blue-lighten text-w400">
+          <h1 style={{ margin: '2rem 0' }} className="text-shadow-default text-blue text-w400">
             Day
             {' '}
             {currentDay}

@@ -1,8 +1,10 @@
 .navbar {
   width: 100%;
-  padding-top: 10px;
-  min-height: 50px;
+  min-height: 60px;
   z-index: 2;
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }
 .navbar.fixed {
   position: fixed;
@@ -29,7 +31,7 @@
       bottom: 0;
       width: 0;
       left: 0;
-      height:2px;
+      height:3px;
       background-color:white;
       transition: all 250ms ease 0s;
     }

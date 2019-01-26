@@ -12,7 +12,7 @@ function App(props) {
   return (
     <Provider store={store}>
       <Navbar fixed {...props} />
-      <div className="container">
+      <div>
         <Home />
       </div>
     </Provider>

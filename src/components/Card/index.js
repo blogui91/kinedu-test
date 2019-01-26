@@ -8,7 +8,7 @@ import './styles.scss';
 export default function Card({ data, onClickCard, style }) {
   return (
     <div className="card non-selectable fade-in" style={style}>
-      <div className="card-header" onClick={e => onClickCard(data.content)}>
+      <div className="card-header" onClick={() => onClickCard(data.content)}>
         <img src={data.content.shareable_thumbnail_url} alt="" />
       </div>
       <div className="card-body" />
@@ -17,7 +17,7 @@ export default function Card({ data, onClickCard, style }) {
           <img src={footIcon} alt="" />
         </div>
         <div className="footer-content">
-          <h3 style={{ fontWeight: 'bold', padding: '5px' }} className="text-grey truncate-">
+          <h3 className="text-grey">
             {data.content.name}
           </h3>
           <p style={{ fontWeight: 'lighter' }} className="text-grey-lighten">

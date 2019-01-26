@@ -26,7 +26,7 @@
 }
 
 p.caption {
-  color: #5f5b5b;
+  color: #979797;
 }
 
 .text-w100 {
@@ -53,6 +53,10 @@ p.caption {
   font-weight: 600;
 }
 
+.text-shadow-default {
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
+}
+
 .truncate {
   width: 100%;
   white-space: nowrap;
@@ -60,10 +64,24 @@ p.caption {
   text-overflow: ellipsis;
 }
 
+.font-text-lato {
+  font-family: 'Lato', sans-serif;
+}
+
+.font-text-lato-bold {
+  @extend .font-text-lato;
+  font-weight: bold;
+}
+
+.font-text-lato-regular {
+  @extend .font-text-lato;
+  font-weight: normal;
+}
+
+
 @media screen and (max-width: 600px) {
   p.caption {
     font-size: 14px;
-    color: #5f5b5b;
     font-weight: 400;
   }
 }
